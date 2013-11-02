@@ -1,0 +1,39 @@
+<center>
+<div style='padding-left:10px;padding-top:10px'>
+{% if noid %}
+	<form method="get">
+		Serial Number: <input type="text" name="id" />
+		<input type="button" class="btn" id="submit" value="Find Device" />
+	</form>
+{% else %}
+	{% if ismissing %}
+			<table style="padding-top:10px; padding-left:10px" class="circled"><tr><td colspan=3 align="center">
+				
+				{% if thanks %}
+					<tr><td colspan=3><p style="left:50px">Thanks for the help!</p></td></tr>
+				{% else %}
+					{% if missingfield %}
+						<form method="get" action="/found/">
+							<tr><td colspan=3><h2 style="left:5px">You found a missing device! Reward available: ${{ reward }}</h2></td></tr>
+							<tr><td colspan=3><br /><h4 style="left:10px">Enter email address or phone number at minimum to report find to owner.</h4><br /></td></tr>
+							<tr><td rowspan="5" width=220>   
+							<img src="/static/images/present.png" width=200 height=200 />
+							</td>
+							    <td align=right>Nickname:</td><td>             <input type="text" name="nickname" placeholder="John Doe" /></td></tr>
+							<tr><td align=right>Email Address:</td><td>        <input type="text" name="email" placeholder="jdoe@example.com" /></td></tr>
+							<tr><td align=right>		Phone Number: </td><td><input type="text" name="phone" placeholder="(555)-555-5555" maxlength="10" /></td></tr>
+							<tr><td align=right>		Location: </td><td>    <input type="text" name="loc" placeholder="New Zealand" /></td></tr>
+							<tr><td align=right>		Device ID: </td><td>   <input type="text" name="id" value="{{did}}" readonly="true" /></td></tr>
+							<tr><td align=center colspan=2>	<input type="submit" class="btn" value="Submit Form" /></td></tr>
+						</form>
+					{% endif %}
+				{% endif %}
+			</table>
+	{% else %}
+		<table style="padding-top:10px; padding-left:10px" class="circled"><tr><td colspan=3 align="center">
+			<tr><td colspan=3><p style="left:50px">That device is not lost.</p></td></tr>
+		</table>
+	{% endif %}
+{% endif %}
+</div>
+</center>

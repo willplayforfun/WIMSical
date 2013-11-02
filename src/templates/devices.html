@@ -1,0 +1,86 @@
+<table width=100%>
+	<tr>
+		<td valign=top style="padding-top:10px; padding-left:40px;">
+			<div style="vertical-align:middle">
+				<h3 style="line-height: 60px;color: #333;font-size: 20px;font-weight: normal; display:inline-block">Devices</h3>
+				<span class="badge badge-inverse" valign=center>{{ deviceCount }}</span>
+				<span style="font-size:40px;">{{ userName }}</span>
+			</div>
+		</td>
+		<td align=right style="padding-right:20px; padding-top:50px;padding-bottom:20px;">
+			<form action="/add/" method="get">
+				<input class="btn" type="submit" value="Add Device" />
+			</form>
+		</td>
+	</tr>
+</table>
+<style>
+	.jp-gui, jp-interface, .jp-jplayer, .jp-audio, .jp-type-single, table.normal, table.normal tbody, table.normal tbody tr, table.normal tbody tr td, table.normal tr, table.normal tr td,
+	table.normal:hover, table.normal tbody:hover, table.normal tbody tr:hover, table.normal tbody tr td:hover, table.normal tr:hover, table.normal tr td:hover{
+		 border-collapse:separate; border:none; border-left:none; border-right:none; border-top:none; border-bottom:none;
+		 border-left-width:0px;
+		 border-right-width:0px;
+		 border-top-width:0px;
+		 border-right-width:0px;
+		 background:none;
+		 background-color:rgba(0,0,0,0);
+		 padding:0px;
+		 color:#000!important;
+	}
+	.normal,.normal:hover{
+		color:#0088cc;
+	}
+	.normal:hover{
+		text-decoration:underline;	
+	}
+	a:visited{
+		color:#00f;
+	}
+	a:hover{
+		text-decoration:underline;
+	}
+</style>
+<table width=100% cellspacing=0 class="table table-hover table-bordered">
+<tr>
+	<td class=bluehead style="font-size:18px;" align=center ><strong>Devices</strong></td>
+	<td class=bluehead style="font-size:18px;width:300px;" align=center><strong>Options</strong></td>
+</tr>
+<!--Device list-->
+{% for device in devices %}
+<tr>
+	
+	<td align=left style='padding-left:15px;padding-right:15px'>
+		<table class="devicetable" cellpadding=0 cellspacing=0 style="max-height:100px; height:100px;min-width:300px;width:100%;">
+			
+			<tr>
+				<td style="padding-left:15px;" >
+					<tr><td><a href="/device?id={{ device.id }}" ><strong>Description:</strong> {{ device.obj.description }}</a></td></tr>
+					<tr><td><a href="/device?id={{ device.id }}" ><strong>Serial Number:</strong> {{ device.obj.serial_number }}</a></td></tr>
+					<tr><td><a href="/device?id={{ device.id }}" ><strong>Reward:</strong> ${{ device.obj.price }}</a></td></tr>
+				</td>
+			</tr>
+			
+			<tr>
+					<td style="color:#999; font-size:11px; padding-left:15px;">
+						{% if device.obj.date_lost %}
+							<span style="font-size:16px;color:#ff9090;">This device was reported lost on {{ device.date_lost }}. </span>
+						{% else %}
+							This device is not lost!
+						{% endif %}
+						{% if device.obj.finder %}
+							<span style="font-size:16px;color:#ff9090;">&nbsp; This device was reported found.</span>
+						{% endif %}
+					</td>
+				</td>
+			</tr>
+		</table>
+	</td>
+	
+	<td>
+		<a class="btn" href="/remove?id={{ device.id }}")>Delete</a>
+		<a class="btn" style="background:#ff9090;font-weight:bold;" href="/missing?id={{ device.id }}")>Report Missing</a>
+		<a class="btn" style="background:#9090ff;font-weight:bold;" href="/unmissing?id={{ device.id }}")>Retreived</a>
+	</td>
+</tr>
+{% endfor %}
+</table>

@@ -1,0 +1,57 @@
+<!-- 
+@session_start();
+include_once('mysqlconnect.php');
+if(!isset($_SESSION['userID'])){exit(0);}
+if(isset($_REQUEST['name'])){
+	$que = "INSERT INTO device (owner, name, description) VALUES (".$_SESSION['userID'].",'".protect($_REQUEST['name'])."','".protect($_REQUEST['description'])."')";
+	mysql_query($que) or die($que.mysql_error());
+	header("location:/");
+}
+else{
+-->
+    
+<form method="post" action="/add">
+
+    <table border=0 align=center width=90%>
+    <tr>
+      <td align=left>
+		<h3> Add Device</h3>
+      </td>
+	  <td></td>
+	  <td align=left>
+		<h4> Examples </h4>
+      </td>
+    </tr>
+    <tr>
+      <td align=right>Serial Number: <br /> <a href="/serialhelp/" target="_blank" >Where is it?</a> <br /></td>
+      <td>
+	<input class=data type=text name="name" size=45 value="{{ name }}" style="width:5`0px">
+      </td>
+	  <td align=left>1522094830_K-0610Q</td>
+    </tr>
+    <tr>
+      <td align=right valign=top>Description:</td>
+      <td>
+	<textarea class=data name="description" style="width:500px; height:200px">{{ description }}</textarea>
+      </td>
+	  <td align=left>My TI-84 Plus. Black. Has large scratch on cover.</td>
+    </tr>
+	<tr>
+      <td align=right>Reward: $</td>
+      <td>
+		<input class=data type=text name="price" size=45 value="{{ price }}" style="width:50px">
+      </td>
+	  <td align=left>25</td>
+    </tr>
+    <tr>
+      <td align=right>(Seen by finder) <br /> &nbsp;</td>
+    </tr>
+	<tr>
+      <td align=right></td>
+      <td>
+	<input type="submit" class="btn">
+      </td>
+    </tr>
+  </table>
+  
+</form>

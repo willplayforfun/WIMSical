@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html style="margin: 0; height:100%; width:100%">
+<head>
+<base href="/">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="CONTENT-LANGUAGE" content="en-US">
+
+<!-- JQuery -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+
+<!-- JQuery UI [jquery must be included first]-->
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="./css/jquery-ui.css" />
+
+<!-- Bootstrap [jquery must be included first]-->
+<link href="/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" media="screen">
+<script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- File uploader -->
+{% if filecss %}
+<script type="text/javascript" src="/js/file.js"></script>
+{% endif %}
+
+<meta property="og:type" content="website">
+
+<meta property="og:image" content="{{image}}">
+<link rel="image_src" href="{{ image }}">
+<meta itemprop="image" content="{{ image }}">
+
+<meta property="og:url" content="{{ url }}">
+
+<meta property="og:title" content="{{ title }}">
+<meta property="og:site_name" content="{{ title }}">
+<meta itemprop="name" content="{{ title }}">
+<title>{{ titleHTML }}</title>
+
+<meta property="og:description" content="{{ description }}">
+<meta name="description" content="{{ description }}">
+<meta itemprop="description" content="{{ description }}">
+
+<link rel="stylesheet" href="css/style.css" type="text/css">
+<link rel="stylesheet" href="fonts/BebasNeue/stylesheet.css" type="text/css">
+
+<script type="text/javascript" src="js/functions.js"></script>
+
+<!--[if lt IE 9]>
+<script src="//ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+<![endif]-->
+
+{% if loggedIn %}
+<script type="text/javascript">
+window.onload = function(){
+	document.getElementById("{{ element }}").className = 'active';	
+}
+</script> 
+{% endif %}
+</head>
+
+<body style="margin: 0; height:100%; width:100%; min-width:670px; min-height:400px; position:absolute;" marginheight="0" marginwidth="0">
+
+<table style="z-index:9000;width:100%; position:absolute; top:0px; left:0px;" width="100%" class="header" cellspacing="0"><tbody>
+<tr><td style="height:30px">
+
+<table><tbody><tr>
+	<td valign="middle" style="padding:5px;width:40px">
+		<a href="/" >
+			<img id="main" src="/static/images/logo.png" width="36px" class="fade circled" style="position:absolute;z-index:10;padding:0px;margin:0px; padding-left:0px; top:5px;width:36px;left:10px;top:3px">
+            <img src="/static/images/logo2.png" width="36px" class="circled" style="position:absolute; top:3px; left:10px;padding:0px;margin:0px;">
+        </a>
+	</td>
+    <td valign="middle" style="padding:10px;">
+    	<a href="/" class="total" style="font-size:20px;color:white">
+                WIMSical</a>
+    </td>
+    <td style="padding:10px;"><a href="/about" style='color:white'>About</a></td>
+    <td style="padding:10px;"><a href="/found" style='color:white'>Found a device</a></td>
+</tr></tbody></table>
+
+</td><td align="right" style="height:100%">
+
+<table style="height:100%" cellspacing="0"><tbody><tr>
+{% if loggedIn %}
+	<td style="padding:10px; height:100%;">
+    	<a href="/logout" style='color:white'>Logout</a>
+    </td>
+{% else %}
+	<td style="padding:10px; height:100%;">
+		<a href="/login" style="color:white;">Login</a>
+	</td>
+{% endif %}
+    
+</tr></tbody></table>
+
+</td></tr></tbody></table>
+
+{% if loggedIn %}
+<style type="text/css">
+ul.nav-list li:not([class=nav-header]){
+	padding-left:15px	
+}
+ul.nav-list{
+	width:150px;
+	top:50px;
+	bottom:0px;
+	background-color:#EEE;
+	box-shadow: 3px 0px 5px #888888;
+	padding-top:10px;
+	position:absolute;
+	z-index:5;
+}
+a, a:visited {
+	color:#00f;
+}
+</style>
+<ul class="nav nav-list" style="width:150px;position:absolute; top:44px">
+  {% if name %}
+  <li class="nav-header" style="color:#000;"><strong>Welcome, {{ name.nickname }}</strong></li>
+  {% endif %}
+  <li class="nav-header">Information</li>
+  <!--<li id=home ><a href="javascript:updateBar('home?ajax=1')" >Home</a></li>
+  <li id=basicInfo><a href="javascript:updateBar('basicInfo?ajax=1');">Basic Info</a></li>-->
+  <li id=accounts ><a href="/account">Account Info</a></li>
+  <li id=howto ><a href="/howto">How To Use</a></li>
+  <li class="nav-header">Devices</li>
+  <li id=devices><a href="/devices">My Devices</a></li>
+  <!--<li id=missing><a href="javascript:updateBar('missing?ajax=1');">Missing</a></li>-->
+  <li id=found><a href="/found">Found</a></li>
+</ul>
+<div id=content style="right:0px; left:180px; bottom:0px; top:44px !important; position:absolute;">
+{{ content }}
+</div>
+
+{% else %}
+
+<div id=content style="right:0px; left:0px; bottom:0px; top:44px !important; position:absolute;">
+{{ content }}
+</div>
+{% endif %}
+</body>
+</html>

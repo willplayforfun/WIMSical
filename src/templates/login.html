@@ -1,0 +1,70 @@
+<center id="viewport2" width=100% height=100% style="width:100%!important;height:100%!important;">
+	<table style="top:50px; width:100%; left:0px; position:absolute;">
+		<tbody style="opacity:50%">
+			<tr>
+				<td valign=middle align=left style="padding-top: 5%; padding-left: 10%; vertical-align:middle;">
+					<table class="circled" style="width:400px !important;padding:30px;">
+						<tr>
+							<td class="page-header" colspan=2 align=left style="padding-bottom:5px;">
+								<h1>Login</h1>
+							</td>
+						</tr>
+						<tr>
+							<td colspan=2 align=center style="width:100%;padding-bottom:13px;padding-top:25px">
+								<a href="{{ googloginURL }}"><img src="/static/images/go_login_2.png" width=99%/></a>
+							</td>
+						</tr>
+						<tr style="padding-bottom:20px;margin-left:3px;width:100%">
+							<td colspan=2 align=center>
+								<a href="{{ fbloginURL }}"><img src="/static/images/fb_login_2.png" width=100%></a>
+							</td>
+						</tr>
+					</table>
+				</td>
+				<td valign=middle align=right style="padding-top: 5%; padding-right: 10%; vertical-align:middle;">
+					<h1 style="color:#ffffff;">Your lost items returned to you.</h1>
+					<br />
+					<h2 style="color:#ffffff;">Now easier than ever.</h2>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</center>
+<style type="text/css">
+	#viewport2 {
+		background-image: url("static/images/stressed_linen.png");
+		/*background-repeat: no-repeat;
+		background-size: 102% 105%;*/
+		background-position: -10px -10px;
+		background-attachment: fixed;
+		background-clip:content-box;
+	}
+</style>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/dragscrollable.js"></script>
+<script>
+  /*$(function() {
+	var cw = $('#viewport').width();
+	$('#viewport').css({'height': cw + 'px'});
+
+	var avatarWidth = $('#viewport').width();
+	var avatarHeight = $('#viewport').height();
+	
+	$('#viewport').css({'background-size': avatarWidth + 'px' + avatarHeight + 'px'});
+	
+	var ratioX = .030;
+	var ratioY = .015;
+
+	function updateImgPosition(e) {
+	  var mouseX = e.pageX - $('#viewport').offset().left;
+	  var mouseY = e.pageY - $('#viewport').offset().top;
+
+	  var imgLeft = ratioX * -mouseX - 100;
+	  var imgTop = ratioY * -mouseY - 100;
+
+	  //$('#viewport').css({'backgroundPosition': imgLeft + "px " + imgTop + "px"});
+	}
+
+	//$('#viewport').mousemove(updateImgPosition);
+  });*/
+</script>

@@ -1,0 +1,24 @@
+<div style="padding-left:5%;">
+	<div>
+		<h1>Device Information</h1>
+		<br />
+		<p>{{ device.description }}</p>
+		<br />
+		<p>Serial Number: <br /> &nbsp;&nbsp;&nbsp; {{ device.serial_number }}</p>
+		<p>Reward: ${% if device.price %}{{ device.price }}{% else %}0{% endif %}</p>
+		{% if device.finder %}
+			<h3> Finder Contact Info </h3>
+			{% if finder_email %}<p>Finder email: {{ finder_email }}</p>{% endif %}
+			{% if finder_phone %}<p>Finder phone: {{ finder_phone }}</p>{% endif %}
+		{% endif %}
+	</div>
+	<br>
+		<div style="padding-top:5px; box-shadow: 0px 0px 10px #888888; width:220px; vertical-align:middle">
+			<center>
+				<h2>Scan Me!</h2>
+				<img src="http://hack-tj.appspot.com/qrcode?id={{ did }}" width=250 height=250 align="middle">
+			</center>
+		</div>
+	<br>
+	<p>See the <a href="/qrtips/">Tips page</a> for advice on how to use the QR code above.</p>
+</div>
